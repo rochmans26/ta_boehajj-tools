@@ -1,0 +1,109 @@
+{
+	"results": [
+		{
+			"antecedent": [],
+			"confidence": 0.8,
+			"consequent": ["mentega"],
+			"itemset_size": 1,
+			"lift": 1,
+			"support": 0.8
+		},
+		{
+			"antecedent": [],
+			"confidence": 0.8,
+			"consequent": ["roti"],
+			"itemset_size": 1,
+			"lift": 1,
+			"support": 0.8
+		},
+		{
+			"antecedent": [],
+			"confidence": 0.6,
+			"consequent": ["susu"],
+			"itemset_size": 1,
+			"lift": 1,
+			"support": 0.6
+		},
+		{
+			"antecedent": ["coklat"],
+			"confidence": 1,
+			"consequent": ["susu"],
+			"itemset_size": 2,
+			"lift": 1.6666666666666667,
+			"support": 0.4
+		},
+		{
+			"antecedent": ["susu"],
+			"confidence": 0.6666666666666667,
+			"consequent": ["coklat"],
+			"itemset_size": 2,
+			"lift": 1.6666666666666667,
+			"support": 0.4
+		},
+		{
+			"antecedent": [],
+			"confidence": 0.8,
+			"consequent": ["mentega", "roti"],
+			"itemset_size": 2,
+			"lift": 1,
+			"support": 0.8
+		},
+		{
+			"antecedent": ["mentega"],
+			"confidence": 1,
+			"consequent": ["roti"],
+			"itemset_size": 2,
+			"lift": 1.25,
+			"support": 0.8
+		},
+		{
+			"antecedent": ["roti"],
+			"confidence": 1,
+			"consequent": ["mentega"],
+			"itemset_size": 2,
+			"lift": 1.25,
+			"support": 0.8
+		},
+		{
+			"antecedent": ["susu"],
+			"confidence": 0.6666666666666667,
+			"consequent": ["mentega"],
+			"itemset_size": 2,
+			"lift": 0.8333333333333334,
+			"support": 0.4
+		},
+		{
+			"antecedent": ["susu"],
+			"confidence": 0.6666666666666667,
+			"consequent": ["roti"],
+			"itemset_size": 2,
+			"lift": 0.8333333333333334,
+			"support": 0.4
+		},
+		{
+			"antecedent": ["susu"],
+			"confidence": 0.6666666666666667,
+			"consequent": ["mentega", "roti"],
+			"itemset_size": 3,
+			"lift": 0.8333333333333334,
+			"support": 0.4
+		},
+		{
+			"antecedent": ["mentega", "susu"],
+			"confidence": 1,
+			"consequent": ["roti"],
+			"itemset_size": 3,
+			"lift": 1.25,
+			"support": 0.4
+		},
+		{
+			"antecedent": ["susu", "roti"],
+			"confidence": 1,
+			"consequent": ["mentega"],
+			"itemset_size": 3,
+			"lift": 1.25,
+			"support": 0.4
+		}
+	],
+	"status": "success"
+}
