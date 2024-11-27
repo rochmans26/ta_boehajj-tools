@@ -26,18 +26,20 @@ class NewAprioriController extends CI_Controller
         }
     }
 
-    // public function index()
-    // {
-    //     $title = 'Apriori Page';
-    //     $data = [
-    //         'lower' => $this->load->view('templates/lower', [], TRUE), // Return as string
-    //         'header' => $this->load->view('templates/header', ['title' => $title], TRUE), // Return as string
-    //         'page' => $this->load->view('pages/apriori_page', [], TRUE) // Return as string
-    //     ];
+    public function index()
+    {
+        $title = 'Tambah Data';
+        $login = $this->check_login(); // Call the check_login function
+        // echo json_encode($riwayatApriori);
+        $data = [
+            'lower' => $this->load->view('templates/lower', ['login' => $login], TRUE), // Return as string
+            'header' => $this->load->view('templates/header', ['title' => $title, 'login' => $login], TRUE), // Return as string
+            'page' => $this->load->view('pages/form_apriori', ['login' => $login], TRUE) // Return as string
+        ];
 
-    //     // Pass the data array to the main view
-    //     $this->load->view('templates/main', $data);
-    // }
+        // Pass the data array to the main view
+        $this->load->view('templates/main', $data);
+    }
 
     public function processApriori()
     {
