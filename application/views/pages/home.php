@@ -114,8 +114,7 @@
                             <b>Confidence</b> mengukur seberapa sering item Y muncul ketika item X ada dalam satu transaksi.
                         </p>
                         <div class="d-flex mx-auto justify-content-center">
-                            <a href="<?= site_url('newaprioricontroller/add_new_data') ?>"
-                                class="btn btn-primary mt-3 mb-3">Get
+                            <a href="<?= site_url('newaprioricontroller/') ?>" class="btn btn-primary mt-3 mb-3">Get
                                 Started</a>
                         </div>
                     </div>

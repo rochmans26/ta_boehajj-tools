@@ -40,6 +40,21 @@ class NewAprioriController extends CI_Controller
         // Pass the data array to the main view
         $this->load->view('templates/main', $data);
     }
+    public function history_apriori()
+    {
+        $title = 'Riwayat Apriori';
+        $login = $this->check_login(); // Call the check_login function
+        $riwayatApriori = $this->AprioriModel->getAllByUser($this->session->userdata('id_user')); // Get
+        // echo json_encode($riwayatApriori);
+        $data = [
+            'lower' => $this->load->view('templates/lower', ['login' => $login], TRUE), // Return as string
+            'header' => $this->load->view('templates/header', ['title' => $title, 'login' => $login], TRUE), // Return as string
+            'page' => $this->load->view('pages/history_apriori', ['login' => $login, 'r_apriori' => $riwayatApriori], TRUE) // Return as string
+        ];
+
+        // Pass the data array to the main view
+        $this->load->view('templates/main', $data);
+    }
 
     public function processApriori()
     {

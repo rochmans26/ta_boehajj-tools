@@ -198,14 +198,26 @@
                         <a href="#" class="sidebar-link collapsed has-dropdown d-flex align-items-center"
                             data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="lni lni-trend-up-1"></i>
-                            <span>Riwayat Apriori</span>
+                            <span>Apriori Usage</span>
                         </a>
                         <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
                                 <a href="<?= site_url('newaprioricontroller') ?>" class="sidebar-link">Algoritma Apriori</a>
                             </li>
+                            <li class="sidebar-item">
+                                <a href="<?= site_url('newaprioricontroller/history_apriori') ?>"
+                                    class="sidebar-link">Riwayat Apriori</a>
+                            </li>
                         </ul>
                     </li>
+                    <?php if ($this->session->userdata('role') == 'admin'): ?>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link d-flex align-items-center">
+                                <i class="lni lni-chart-bar"></i>
+                                <span>Kelola User</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 <?php endif; ?>
                 <!-- <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
