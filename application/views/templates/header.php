@@ -212,7 +212,7 @@
                     </li>
                     <?php if ($this->session->userdata('role') == 'admin'): ?>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link d-flex align-items-center">
+                            <a href="<?= site_url('users') ?>" class="sidebar-link d-flex align-items-center">
                                 <i class="lni lni-user-multiple-4"></i>
                                 <span>Kelola User</span>
                             </a>

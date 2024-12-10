@@ -13,7 +13,6 @@ class NewAprioriController extends CI_Controller
     {
         parent::__construct();
         $this->load->helper(['url', 'file']);
-        $this->load->library('session');
         $this->load->model('AprioriModel');
     }
     private function check_login()
@@ -42,16 +41,22 @@ class NewAprioriController extends CI_Controller
 
     public function index()
     {
+        if (!$this->session->userdata('username'))
+            redirect('auth');
         $this->render_view('Tambah Data', 'pages/form_apriori');
     }
     public function history_apriori()
     {
+        if (!$this->session->userdata('username'))
+            redirect('auth');
         $riwayatApriori = $this->AprioriModel->getAllByUser($this->session->userdata('id_user'));
         $this->render_view('Riwayat Apriori', 'pages/history_apriori', ['r_apriori' => $riwayatApriori]);
     }
 
     public function processApriori()
     {
+        if (!$this->session->userdata('username'))
+            redirect('auth');
         $min_support = $this->input->post('min_support');
         $min_confidence = $this->input->post('min_confidence');
         $id_user = $this->input->post('id_user');
@@ -115,6 +120,8 @@ class NewAprioriController extends CI_Controller
      */
     private function sendToAprioriApi($transactions, $min_support, $min_confidence)
     {
+        if (!$this->session->userdata('username'))
+            redirect('auth');
         // Persiapkan data untuk dikirim ke API
         $data = [
             "transactions" => $transactions,
@@ -144,6 +151,8 @@ class NewAprioriController extends CI_Controller
 
     public function view_apriori($id_history)
     {
+        if (!$this->session->userdata('username'))
+            redirect('auth');
         $getData = $this->AprioriModel->getLogById($id_history);
         $result = $this->sendToAprioriApi(json_decode($getData->transaction), $getData->min_support, $getData->min_confidence);
         $d_apriori['association_rules'] = $result['association_rules'];
@@ -157,6 +166,8 @@ class NewAprioriController extends CI_Controller
 
     public function hapus($id_history)
     {
+        if (!$this->session->userdata('username'))
+            redirect('auth');
         $delete = $this->AprioriModel->delete($id_history);
         if ($delete) {
             $this->session->set_flashdata('msg', 'Data berhasil dihapus!');
@@ -171,6 +182,8 @@ class NewAprioriController extends CI_Controller
     // Fungsi untuk membaca file CSV dan mengonversinya menjadi array transaksi berdasarkan Order ID dan Product Name
     private function readTransactionFile($filePath, $fileType)
     {
+        if (!$this->session->userdata('username'))
+            redirect('auth');
         $transactions = [];
         $orderItems = [];
 
@@ -220,17 +233,19 @@ class NewAprioriController extends CI_Controller
         return $transactions;
     }
 
-    public function result_page()
-    {
+    // public function result_page()
+    // {
+    //     if (!$this->session->userdata('username'))
+    //         redirect('auth');
 
-        $title = 'Apriori Result Page';
-        $login = $this->check_login(); // Call the check_login function
-        $data = [
-            'lower' => $this->load->view('templates/lower', ['login' => $login], TRUE), // Return as string
-            'header' => $this->load->view('templates/header', ['title' => $title, 'login' => $login], TRUE), // Return as string
-            'page' => $this->load->view('pages/apriori_result', ['login' => $login], TRUE) // Return as string
-        ];
-        $this->load->view('templates/main', $data);
-    }
+    //     $title = 'Apriori Result Page';
+    //     $login = $this->check_login(); // Call the check_login function
+    //     $data = [
+    //         'lower' => $this->load->view('templates/lower', ['login' => $login], TRUE), // Return as string
+    //         'header' => $this->load->view('templates/header', ['title' => $title, 'login' => $login], TRUE), // Return as string
+    //         'page' => $this->load->view('pages/apriori_result', ['login' => $login], TRUE) // Return as string
+    //     ];
+    //     $this->load->view('templates/main', $data);
+    // }
 
 }

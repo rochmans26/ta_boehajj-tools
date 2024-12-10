@@ -38,39 +38,43 @@
             <?php endif; ?>
             <div class="card shadow-sm mb-3">
                 <div class="card-body">
-                    <h1 class="card-title text-center mb-4">Riwayat Apriori</h1>
+                    <h1 class="card-title text-center mb-4">Daftar User</h1>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered rounded">
                             <thead>
                                 <tr class="text text-center">
-                                    <th scope="col">Tanggal</th>
-                                    <th scope="col">Nama File</th>
-                                    <th scope="col">Min Support</th>
-                                    <th scope="col">Min Confidence</th>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Address</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($r_apriori as $value) { ?>
+                                <?php
+                                $no = 1;
+                                foreach ($data as $value) { ?>
                                     <tr class="text text-center">
                                         <td>
-                                            <?php echo date('d-m-Y', strtotime($value->time_stamp)); ?>
+                                            <?php echo $no++; ?>
                                         </td>
                                         <td>
-                                            <?php echo $value->nama_file; ?>
+                                            <?php echo $value->email; ?>
                                         </td>
                                         <td>
-                                            <?php echo $value->min_support; ?>
+                                            <?php echo $value->username; ?>
                                         </td>
                                         <td>
-                                            <?php echo $value->min_confidence; ?>
+                                            <?php echo $value->notelp; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $value->alamat; ?>
                                         </td>
                                         <td>
                                             <div class="d-flex mx-auto justify-content-center">
-                                                <a href="<?= site_url('newaprioricontroller/view_apriori/' . $value->id_history); ?>"
-                                                    class="btn btn-sm btn-success">Lihat</a> &nbsp;
-                                                <a href="<?= site_url('newaprioricontroller/hapus/' . $value->id_history); ?>"
-                                                    class="btn btn-sm btn-danger">Hapus</a>
+                                                <a href="<?= site_url('users/blockUser/' . $value->id_user); ?>"
+                                                    class="btn btn-sm btn-danger">Block</a>
                                             </div>
                                         </td>
                                     </tr>
